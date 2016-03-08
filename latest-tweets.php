@@ -311,6 +311,16 @@ function lastest_tweets_shortcode( $atts ){
 add_shortcode( 'tweets', 'lastest_tweets_shortcode' );
 
 
+function random_tweet_shortcode( $atts ){
+    $screen_name = isset($atts['user']) ? trim($atts['user'],' @') : '';
+    $num = isset($atts['max']) ? (int) $atts['max'] : 5;
+    $list = latest_tweets_render( $screen_name, $num, false, false );
+    $limit = count($list) - 1;
+    $tweet = $limit >= 0 ? $list[ rand(0, $limit) ] : '';
+    return tweet;
+}
+add_shortcode( 'random_tweet', 'random_tweet_shortcode' );
+
 
 if( is_admin() ){
     if( ! function_exists('twitter_api_get') ){
