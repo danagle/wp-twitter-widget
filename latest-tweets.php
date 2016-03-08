@@ -4,7 +4,7 @@ Plugin Name: Latest Tweets Widget
 Plugin URI: http://wordpress.org/extend/plugins/latest-tweets-widget/
 Description: Provides a sidebar widget showing latest tweets - compatible with the new Twitter API 1.1
 Author: Tim Whitlock
-Version: 1.1.3
+Version: 1.1.4
 Author URI: http://timwhitlock.info/
 Text Domain: twitter-api
 Domain Path: /api/lang/
@@ -317,7 +317,7 @@ function random_tweet_shortcode( $atts ){
     $list = latest_tweets_render( $screen_name, $num, false, false );
     $limit = count($list) - 1;
     $tweet = $limit >= 0 ? $list[ rand(0, $limit) ] : '';
-    return tweet;
+    return $tweet;
 }
 add_shortcode( 'random_tweet', 'random_tweet_shortcode' );
 
